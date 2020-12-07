@@ -3,16 +3,22 @@
 
 {% block styles%}
     {{ super() }}
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/mains.css') }}">
 {% endblock %}
 
 {% block content %}
 <body>
-   <div class="container">
-      <h1 class="text-center">First impressions last – create the perfect pitch</h1>
-      <p>Click <a href="{{ url_for('auth.register') }}">here</a> to sign up to make a pitch.  </p>
-      <p>If already signed up click <a href="{{ url_for('auth.login') }}">here</a> to log in.</p>
-      <p>Click<a href="{{ url_for('main.new_pitch') }}"> here </a>to create a pitch or view existing Pitches.</p>
-    </div>
+   <div class="container" id="wrapper">
+      <h1 class="text-center">First impressions last – create the perfect pitch</h1><hr>
+      <p>Whether you’re trying to gain the interest of a potential customer, 
+         trying to get the attention of an interviewer, a crush, a stranger or simply explain what you do, 
+         having a strong first impression is your key to success.</p>
+      <p>Traditionally, an elevator pitch is a quick summary that you use in any situation where you need to explain your business or what you do in a clear and concise manner. 
+         It gets the name ‘elevator pitch’ because you should be able to get through your whole speech in the time it takes to travel from the ground floor 
+         to the top floor in an elevator (30-60 seconds).</p>   
+      <div class="alert">
+         <h5>Join our community to practice, share and improve your elevator pitches. LET THE FIRST 60 SECONDS COUNT.</h5>
+      </div>   
+   </div>
 </body>
 {% endblock %}
