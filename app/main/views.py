@@ -27,12 +27,13 @@ def new_pitch():
 @main.route('/comment/new', methods = ["GET", "POST"])
 @login_required
 def new_comment():
-    comment_form = CommentForm()
-    if comment_form.validate_on_submit():
-        comment = Comment(comment=comment_form.comment.data)
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(comment=form.comment.data)
         db.session.add(comment)
         db.session.commit()
         flash('Your comment has been posted succesfully')
         return redirect(url_for('main.new_comment'))
+    title = "Write a comment"    
     comments = Comment.query.all()
-    return render_template('form.html', comment_form=comment_form, comment_list=comments)
+    return render_template('form.html', title=title, form=form, comment_list=comments)
