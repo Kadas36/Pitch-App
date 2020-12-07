@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf%}
+
+{% block styles%}
+    {{ super() }}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/pitch.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+   <div class="row">
+      <div class="col-md-8">
+         <h1>Pitches</h1>
+         {% for pitch in pitch_list %}
+         <div class="card-header">
+            <h3 class="card-title">{{pitch.title}}</h3>
+         </div>
+         <div class="card-body">
+            <p class="card-text">{{pitch.body}}</p>
+         </div>
+         <div class="card-footer">
+            <a href="{{ url_for('main.new_comment') }}">Comment</a>
+         </div>
+         <hr>
+         {% endfor %}
+      </div> 
+		<div class="col-md-4">
+         <h1>Add to our Pitches</h1>
+			<form method="POST" action="">
+            <div class="form-group">
+               <label for="">Category</label>
+               {{ form.title(class="form-control form-control-lg") }}
+            </div>
+            <div class="form-group">
+               <label for="">Pitch</label>
+               {{ form.body(class="form-control form-control-lg") }}
+            </div>
+            <div class="form-group">
+               {{ form.submit }}
+            </div>
+			</form>
+      </div>
+   </div>   
+</div>
+
+{% endblock content %}
