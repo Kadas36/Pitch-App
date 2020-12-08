@@ -13,8 +13,9 @@ class User(UserMixin,db.Model):
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(255),index = True)
     email = db.Column(db.String(255), unique = True, index = True)
-    comment = db.relationship('Comment', backref='main_user', lazy='dynamic')
     pass_secure = db.Column(db.String(255))
+    comment = db.relationship('Comment', backref='main_user', lazy='dynamic')
+    
 
     @property
     def password(self):
