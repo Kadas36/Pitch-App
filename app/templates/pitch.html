@@ -22,23 +22,16 @@
          <div class="card-footer">
             <a href="{{ url_for('main.new_comment') }}">Comment</a>
          </div>
+         {% for comm in comment_list %}
+         <li><small>{{comm.comment}}</small></li>
+         {% endfor %}
          <hr>
          {% endfor %}
       </div> 
 		<div class="col-md-4">
          <h1>Add to our Pitches</h1>
 			<form method="POST" action="">
-            <div class="form-group">
-               <label for="">Category</label>
-               {{ form.title(class="form-control form-control-lg") }}
-            </div>
-            <div class="form-group">
-               <label for="">Pitch</label>
-               {{ form.body(class="form-control form-control-lg") }}
-            </div>
-            <div class="form-group">
-               {{ form.submit }}
-            </div>
+            {{wtf.quick_form(form)}}
 			</form>
       </div>
    </div>   

@@ -15,6 +15,7 @@ def new_pitch():
     form = PitchForm()
     if form.validate_on_submit():
         pitch = Pitch(title = form.title.data, body = form.body.data)
+        # save pitch
         db.session.add(pitch)
         db.session.commit()
         flash('Your pitch has been created')
@@ -27,13 +28,15 @@ def new_pitch():
 @main.route('/comment/new', methods = ["GET", "POST"])
 @login_required
 def new_comment():
-    Commentform = CommentForm()
-    if Commentform.validate_on_submit():
-        comment = Comment(comment=Commentform.comment.data)
+    commentform = CommentForm()
+    if commentform.validate_on_submit():
+        comment = Comment(comment=commentform.comment.data)
+        
+        #save comment
         db.session.add(comment)
         db.session.commit()
         flash('Your comment has been posted')
-        return redirect(url_for('main.new_comment'))
+        return redirect(url_for('main.new_pitch'))
     title = "Comment"    
     comments = Comment.query.all()
-    return render_template('form.html', title=title, form=Commentform, comment_list=comments)
+    return render_template('comment_form.html', title=title, commentform=commentform, comment_list=comments)
