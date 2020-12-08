@@ -22,5 +22,8 @@ We bring you the Elevator Pitch App - an answer to the aforementioned problems. 
 ## Support and contact details
 Incase of any troubles with the site, feedback and any communication to the developer, email at oduorthomas14@gmail.com
 
+## Live Link 
+https://elevator-ptch.herokuapp.com/
+
 ### License
 MIT © kadas36
